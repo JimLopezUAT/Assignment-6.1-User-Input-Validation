@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Strings Page for Input Validation Assignment
+     Created by Jimmy Lopez
+     Date: Jun 17, 2023
+     Email: jimlopez@uat.edu
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings Page</title>
+    <style>
+        /* Basic styling for a nice look and feel */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aquamarine;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        p {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        img {
+            width: 200px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Strings Page!</h1>
+    <p>Not going to lie, I am a bit confused if I did this right</p>
+    <img src="saitama.jfif" alt="At lease we passed">
+    <form id="inputForm">
+        <input type="text" id="firstNameInput" placeholder="First Name" required>
+        <input type="text" id="lastNameInput" placeholder="Last Name" required>
+        <input type="text" id="zipCodeInput" placeholder="Zip Code" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Get references to the input elements
+        const firstNameInput = document.getElementById('firstNameInput');
+        const lastNameInput = document.getElementById('lastNameInput');
+        const zipCodeInput = document.getElementById('zipCodeInput');
+
+        // Add event listener to the form on submit
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve the values from the input elements
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            const zipCode = zipCodeInput.value.trim();
+
+            // Check if the combined name length is greater than 20 characters
+            const fullName = firstName + ' ' + lastName;
+            if (fullName.length > 20) {
+                alert('Invalid input! The combined name cannot exceed 20 characters.');
+                return; // Stop further execution
+            }
+
+            // Check if the zip code contains exactly 5 digits
+            if (!/^\d{5}$/.test(zipCode)) {
+                alert('Invalid input! Zip code should contain exactly 5 digits.');
+                return; // Stop further execution
+            }
+
+            // If all inputs are valid, display the secret message
+            const secretMessage = 'Congratulations! You have unlocked the secret message.';
+            alert(secretMessage);
+        });
+    </script>
+</body>
+</html>
